@@ -475,7 +475,7 @@ footer strong { color: var(--fg); }
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">Post<span>Forge</span></a>
-    <a href="#pricing" class="nav-cta">Get Started →</a>
+    <a href="#contact" class="nav-cta">Get Started →</a>
   </div>
 </nav>
 
@@ -744,7 +744,7 @@ footer strong { color: var(--fg); }
         <li>Works with your existing email platform</li>
         <li>14-day support after delivery</li>
       </ul>
-      <a href="https://www.fiverr.com" target="_blank" class="pricing-link secondary">Order on Fiverr</a>
+      <a href="#contact" class="pricing-link secondary">Get Started →</a>
     </div>
 
     <div class="pricing-card featured">
@@ -761,7 +761,7 @@ footer strong { color: var(--fg); }
         <li>Friday weekend box feature</li>
         <li>30-day support after delivery</li>
       </ul>
-      <a href="https://www.fiverr.com" target="_blank" class="pricing-link primary">Order on Fiverr</a>
+      <a href="#contact" class="pricing-link primary">Get Started →</a>
     </div>
 
     <div class="pricing-card">
@@ -775,24 +775,58 @@ footer strong { color: var(--fg); }
         <li>SMTP & deliverability configuration</li>
         <li>60-day priority support</li>
       </ul>
-      <a href="#book" class="pricing-link secondary">Book a call first</a>
+      <a href="#contact" class="pricing-link secondary">Book a call →</a>
     </div>
   </div>
 </section>
 </div>
 
-<!-- FOOTER CTA -->
-<div class="footer-cta" id="book">
+<!-- CONTACT SECTION -->
+<div class="footer-cta" id="contact">
   <h2>Ready to reclaim your time?</h2>
-  <p>Let's get PostForge set up for your blog. Order directly on Fiverr, or book a quick call if you'd like to talk it through first.</p>
-  <div class="btn-row">
-    <a href="https://www.fiverr.com" target="_blank" class="btn-primary">Order on Fiverr →</a>
-    <a href="https://calendly.com" target="_blank" class="btn-secondary">📅 Book a free call</a>
-  </div>
+  <p>Tell us about your blog and which package you're interested in. We'll get back to you within 24 hours.</p>
+
+  <form name="postforge-contact" method="POST" data-netlify="true" style="max-width:520px;margin:40px auto 0;text-align:left;">
+    <input type="hidden" name="form-name" value="postforge-contact">
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Your name</label>
+      <input type="text" name="name" required placeholder="Jane Smith"
+        style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;">
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Email address</label>
+      <input type="email" name="email" required placeholder="you@yourblog.com"
+        style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;">
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Your WordPress blog URL</label>
+      <input type="url" name="blog_url" placeholder="https://yourblog.com"
+        style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;">
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Package interested in</label>
+      <select name="package" style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;">
+        <option value="starter">Starter — $49</option>
+        <option value="pro" selected>Pro — $89 (Most Popular)</option>
+        <option value="enterprise">Enterprise — $149</option>
+        <option value="unsure">Not sure yet</option>
+      </select>
+    </div>
+    <div style="margin-bottom:24px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Anything else? (optional)</label>
+      <textarea name="message" rows="3" placeholder="Tell us about your newsletter, your email platform, or any questions…"
+        style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;resize:vertical;"></textarea>
+    </div>
+    <button type="submit"
+      style="width:100%;padding:14px;background:var(--accent);color:white;border:none;border-radius:6px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:0.3px;">
+      Send Message →
+    </button>
+    <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--fg2);">Or email us directly at <a href="mailto:support@postforge.live" style="color:var(--accent2);">support@postforge.live</a></p>
+  </form>
 </div>
 
 <footer>
-  <strong>PostForge</strong> — Custom WordPress Newsletter Builder &nbsp;·&nbsp; Built by Timmy &nbsp;·&nbsp; timmyviberant@gmail.com
+  <strong>PostForge</strong> — Custom WordPress Newsletter Builder &nbsp;·&nbsp; support@postforge.live
 </footer>
 
 <script>
