@@ -486,6 +486,8 @@ footer strong { color: var(--fg); }
   .demo-field-row { grid-template-columns: 1fr; }
 }
 </style>
+</head>
+<body>
 
 <!-- NAV -->
 <nav>
@@ -802,8 +804,12 @@ footer strong { color: var(--fg); }
   <h2>Ready to reclaim your time?</h2>
   <p>Tell us about your blog and which package you're interested in. We'll get back to you within 24 hours.</p>
 
-  <form name="postforge-contact" method="POST" data-netlify="true" style="max-width:520px;margin:40px auto 0;text-align:left;">
-    <input type="hidden" name="form-name" value="postforge-contact">
+  <form name="postforge-contact" method="POST" action="https://api.web3forms.com/submit" style="max-width:520px;margin:40px auto 0;text-align:left;">
+    <input type="hidden" name="access_key" value="1ace1298-2bfc-45db-aaa0-03b1be691fc5">
+    <input type="hidden" name="subject" value="New PostForge Enquiry">
+    <input type="hidden" name="from_name" value="PostForge Contact Form">
+    <input type="checkbox" name="botcheck" style="display:none;">
+
     <div style="margin-bottom:16px;">
       <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--fg2);">Your name</label>
       <input type="text" name="name" required placeholder="Jane Smith"
@@ -833,12 +839,34 @@ footer strong { color: var(--fg); }
       <textarea name="message" rows="3" placeholder="Tell us about your newsletter, your email platform, or any questions…"
         style="width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--fg);font-size:15px;font-family:inherit;resize:vertical;"></textarea>
     </div>
-    <button type="submit"
+    <button type="submit" id="contactSubmitBtn"
       style="width:100%;padding:14px;background:var(--accent);color:white;border:none;border-radius:6px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:0.3px;">
       Send Message →
     </button>
+    <div id="contactSuccess" style="display:none;text-align:center;padding:16px;background:rgba(0,206,201,0.1);border:1px solid var(--green);border-radius:6px;margin-top:16px;color:var(--green);font-weight:600;">
+      ✅ Message sent! We'll get back to you within 24 hours.
+    </div>
     <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--fg2);">Or email us directly at <a href="mailto:support@postforge.live" style="color:var(--accent2);">support@postforge.live</a></p>
   </form>
+  <script>
+  document.querySelector('form[name="postforge-contact"]').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    const data = new FormData(this);
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const json = await res.json();
+    if (json.success) {
+      this.style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at support@postforge.live');
+    }
+  });
+  </script>
 </div>
 
 <footer>
